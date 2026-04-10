@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{3c1c2ab7-5acb-4ddb-8988-424ed3595717}">
+		<property name="assetPath">
+			<value>Player/Foot_Step_Stairs/Player_Foot_Stairs_3.flac</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.984375</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{437d7a57-f539-4fa1-b93a-70968ba580e3}</destination>
+		</relationship>
+	</object>
+</objects>

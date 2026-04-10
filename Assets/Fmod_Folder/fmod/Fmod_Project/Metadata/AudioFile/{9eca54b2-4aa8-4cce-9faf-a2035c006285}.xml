@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{9eca54b2-4aa8-4cce-9faf-a2035c006285}">
+		<property name="assetPath">
+			<value>Player/Foot_Step_Stone/Player_Foot_Step_Stone_5.flac</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.59375</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{437d7a57-f539-4fa1-b93a-70968ba580e3}</destination>
+		</relationship>
+	</object>
+</objects>
