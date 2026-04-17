@@ -68,10 +68,10 @@ MonoBehaviour:
   Path: ../../../Desktop/audio/fmod/Fmod_Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639114143309564975
+  lastModified: 639120133577049565
   FileSizes:
   - Name: Desktop
-    Value: 7195808
+    Value: 7148416
   Exists: 1
 --- !u!114 &-5661355354192444140
 MonoBehaviour:
@@ -178,15 +178,15 @@ MonoBehaviour:
   - {fileID: -5661355354192444140}
   - {fileID: 1126120931296073186}
   - {fileID: -3548818249196405087}
-  - {fileID: 1144410993698745850}
   - {fileID: -1181832659706217122}
+  - {fileID: 1768393118771263762}
   EditorParameters: []
   MasterBanks:
   - {fileID: -6428026207252227765}
   StringsBanks:
   - {fileID: 8665874816102234907}
   cacheVersion: 131859
-  cacheTime: 639114143309580025
+  cacheTime: 639120133577059623
   SerializableEventsDict:
   - key: event:/Ambient/Ambient_Forest
     index: 0
@@ -200,9 +200,9 @@ MonoBehaviour:
     index: 4
   - key: event:/Ambient/Ambient_tavern
     index: 5
-  - key: event:/Music/Music_Tavern
-    index: 6
   - key: event:/Doors
+    index: 6
+  - key: event:/Music/Ambient_Tavern_Music_1
     index: 7
 --- !u!114 &1126120931296073186
 MonoBehaviour:
@@ -232,7 +232,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 765
---- !u!114 &1144410993698745850
+--- !u!114 &1768393118771263762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,23 +242,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Music_Tavern
+  m_Name: event:/Music/Ambient_Tavern_Music_1
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Music/Music_Tavern
+  Path: event:/Music/Ambient_Tavern_Music_1
   Guid:
-    Data1: -724910210
-    Data2: 1145522324
-    Data3: 435177381
-    Data4: 168634672
+    Data1: -340428162
+    Data2: 1223467622
+    Data3: -711046780
+    Data4: 527482063
   Banks:
   - {fileID: -6428026207252227765}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 248500
+  Length: 244750
 --- !u!114 &2325217308428917909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,8 +410,8 @@ MonoBehaviour:
   Path: ../../../Desktop/audio/fmod/Fmod_Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639114143309580025
+  lastModified: 639120133577059623
   FileSizes:
   - Name: Desktop
-    Value: 1220
+    Value: 1230
   Exists: 1
