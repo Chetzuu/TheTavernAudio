@@ -16,8 +16,6 @@ public class Footsteps : MonoBehaviour
     public EventReference jumpEvent;
     public EventReference landEvent;
 
-    // Usunięto: private Dictionary<string, string> surfaceTags;
-
     private float lastFootstepTime = 0f;
     private float distToGround;
 
@@ -29,8 +27,6 @@ public class Footsteps : MonoBehaviour
     void Start()
     {
         distToGround = GetComponent<Collider>().bounds.extents.y;
-        
-        // Usunięto: Inicjalizację słownika.
     }
 
     void Update()
@@ -129,14 +125,12 @@ public class Footsteps : MonoBehaviour
 
     /// <summary>
     /// Ogólna metoda do odtwarzania dźwięku na podstawie tagu powierzchni.
-    /// ZASTĘPUJE SŁOWNIK instrukcją SWITCH.
     /// </summary>
-    /// <param name="soundInstance">Instancja dźwięku FMOD.</param>
-    /// <param name="eventRef">Referencja do zdarzenia FMOD.</param>
-    /// <param name="surfaceTag">Tag powierzchni, na której znajduje się gracz.</param>
     private void PlaySurfaceSound(FMOD.Studio.EventInstance soundInstance, EventReference eventRef, string surfaceTag)
     {
-        // Zmienna przechowująca parametr FMOD. Domyślnie ustawiona na null/pusty string.
+        // LOG 1: Sprawdza w co dokładnie uderzył Raycast
+        Debug.Log("<color=cyan>Raycast trafił w obiekt z tagiem: </color><b>" + surfaceTag + "</b>");
+
         string surfaceParameter = null; 
 
         // Instrukcja SWITCH do mapowania Tagu na Parametr FMOD.
@@ -144,7 +138,7 @@ public class Footsteps : MonoBehaviour
         {
             case "Stone":
             case "Inside_stone":
-            case "Outside": // "Outside" również używa parametru "Stone"
+            case "Outside":
                 surfaceParameter = "Stone";
                 break;
             
@@ -153,18 +147,34 @@ public class Footsteps : MonoBehaviour
                 surfaceParameter = "Wood";
                 break;
 
-            case "Bed":
-                surfaceParameter = "Bed";
+            case "Stairs":
+                surfaceParameter = "Stairs";
+                break;
+                
+            default:
+                // LOG: Jeśli obiekt ma tag, którego nie ma na liście wyżej (albo nie ma go wcale)
+                Debug.Log("<color=orange>Brak tagu na liście! Ustawiam awaryjnie: Wood</color>");
+                surfaceParameter = "Wood";
                 break;
         }
 
-        // Jeśli znaleziono pasujący parametr, odtwórz dźwięk.
         if (surfaceParameter != null)
         {
             soundInstance = RuntimeManager.CreateInstance(eventRef);
             soundInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
-            // Ustawia parametr FMOD na podstawie ustalonej wartości.
-            soundInstance.setParameterByNameWithLabel("Footsteps_surface", surfaceParameter); 
+            
+            // LOG 2: Sprawdza, co skrypt próbuje przekazać do FMODa
+            Debug.Log("<color=green>Wysyłam do FMOD parametr: </color>" + surfaceParameter);
+
+            // ZMIENIONE: Z "Footsteps_surface" na "Manager_Footsteps" z Twojego screena
+            FMOD.RESULT result = soundInstance.setParameterByNameWithLabel("Manager_Footsteps", surfaceParameter); 
+            
+            if (result != FMOD.RESULT.OK)
+            {
+                // LOG 3: Jeśli nazwa "Manager_Footsteps" w FMOD jest jednak inna, tutaj wywali błąd
+                Debug.LogError("<color=red>FMOD BŁĄD: </color>" + result);
+            }
+
             soundInstance.start();
             soundInstance.release();
         }
