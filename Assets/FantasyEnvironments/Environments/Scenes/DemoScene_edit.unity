@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 129069800}
   - component: {fileID: 129069799}
   - component: {fileID: 129069798}
+  - component: {fileID: 129069801}
   m_Layer: 0
   m_Name: RoomAmbTrigger 2
   m_TagString: Untagged
@@ -345,6 +346,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129069795}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &129069801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129069795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dbf81bbd6e742a47ab052aa598c527b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rooms
 --- !u!1 &131062900
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,6 +2649,7 @@ GameObject:
   - component: {fileID: 613997994}
   - component: {fileID: 613997995}
   - component: {fileID: 613997996}
+  - component: {fileID: 613997997}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2732,7 +2746,7 @@ Transform:
   m_GameObject: {fileID: 613997984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 400.45, y: 8.22, z: 300.74}
+  m_LocalPosition: {x: 400.45, y: 8.22, z: 307.812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2826,20 +2840,20 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -724910210
-      Data2: 1145522324
-      Data3: 435177381
-      Data4: 168634672
-    Path: event:/Music/Music_Tavern
+      Data1: -340428162
+      Data2: 1223467622
+      Data3: -711046780
+      Data4: 527482063
+    Path: event:/Music/Ambient_Tavern_Music_1
   Event: 
-  EventPlayTrigger: 1
+  EventPlayTrigger: 0
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
   Params: []
-  OverrideAttenuation: 0
+  OverrideAttenuation: 1
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
 --- !u!114 &613997995
@@ -2891,6 +2905,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
   InteractorSource: {fileID: 2114139266}
   InteractRange: 2
+--- !u!114 &613997997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613997984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d95e26b5cbbe94f93658dcf4aa33cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outside_foot_switch
+  snapshotActivated: 0
+  outsideSnapshot:
+    Guid:
+      Data1: -2116471840
+      Data2: 1077057176
+      Data3: -933700201
+      Data4: -1390444203
+    Path: snapshot:/Outside_Snapshot
 --- !u!1 &688602384
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,6 +3462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 882882083}
+  - component: {fileID: 882882084}
   m_Layer: 0
   m_Name: RoomAmbientTriggers
   m_TagString: Untagged
@@ -3452,6 +3487,25 @@ Transform:
   - {fileID: 129069796}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &882882084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882882082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc4a4da891945f49aaa5b911f9f8711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomAmbient
+  roomAmbientEvent:
+    Guid:
+      Data1: 1917994135
+      Data2: 1090178613
+      Data3: 55822722
+      Data4: 2036726102
+    Path: snapshot:/Rooms
 --- !u!1 &896572285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3757,6 +3811,7 @@ GameObject:
   - component: {fileID: 1039452382}
   - component: {fileID: 1039452381}
   - component: {fileID: 1039452380}
+  - component: {fileID: 1039452384}
   m_Layer: 0
   m_Name: RoomAmbTrigger 1
   m_TagString: Untagged
@@ -3858,6 +3913,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 882882083}
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+--- !u!114 &1039452384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039452379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dbf81bbd6e742a47ab052aa598c527b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rooms
 --- !u!1 &1110397076
 GameObject:
   m_ObjectHideFlags: 0

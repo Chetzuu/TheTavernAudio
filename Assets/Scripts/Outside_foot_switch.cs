@@ -30,24 +30,19 @@ public class Outside_foot_switch : MonoBehaviour
     /// <summary>
     /// Sprawdza, czy należy włączyć lub wyłączyć snapshot.
     /// </summary>
-    private void ToggleSnapshotLogic()
+private void ToggleSnapshotLogic()
     {
         RaycastHit hit;
-        // Wykonuje raycast, aby sprawdzić, co znajduje się pod graczem.
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, distToGround + 0.5f))
+        float maxDistance = distToGround + 0.5f;
+
+        // Rysuje czerwoną linię w oknie Scene, żebyś widział jak długi jest promień
+        Debug.DrawRay(transform.position, Vector3.down * maxDistance, Color.red);
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, maxDistance))
         {
             string tag = hit.collider.tag;
             
-            // Włącza snapshot, jeśli gracz jest na zewnątrz, a snapshot nie jest aktywny.
-            if (tag == "Outside" && !snapshotActivated)
-            {
-                ToggleSnapshot(true);
-            }
-            // Wyłącza snapshot, jeśli gracz jest wewnątrz, a snapshot jest aktywny.
-            else if ((tag == "Inside_stone" || tag == "Inside_wood") && snapshotActivated)
-            {
-                ToggleSnapshot(false);
-            }
+            // Wypisuje w konsoli, w co dokładnie uderzył promień!
         }
     }
 
