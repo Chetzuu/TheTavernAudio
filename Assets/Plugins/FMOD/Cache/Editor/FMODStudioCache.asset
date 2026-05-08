@@ -68,10 +68,10 @@ MonoBehaviour:
   Path: ../../../Desktop/audio/fmod/Fmod_Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639129772376451068
+  lastModified: 639138372229563543
   FileSizes:
   - Name: Desktop
-    Value: 7149664
+    Value: 7150528
   Exists: 1
 --- !u!114 &-5661355354192444140
 MonoBehaviour:
@@ -187,7 +187,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 8665874816102234907}
   cacheVersion: 131859
-  cacheTime: 639129772376471208
+  cacheTime: 639138372229578592
   SerializableEventsDict:
   - key: event:/Ambient/Ambient_Forest
     index: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   - {fileID: -6428026207252227765}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -440,8 +440,8 @@ MonoBehaviour:
   Path: ../../../Desktop/audio/fmod/Fmod_Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639129772376471208
+  lastModified: 639138372229578592
   FileSizes:
   - Name: Desktop
-    Value: 1362
+    Value: 1542
   Exists: 1

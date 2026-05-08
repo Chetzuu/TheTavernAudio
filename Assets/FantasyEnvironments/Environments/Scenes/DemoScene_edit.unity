@@ -2136,9 +2136,9 @@ MonoBehaviour:
   Preload: 0
   NonRigidbodyVelocity: 0
   Params: []
-  OverrideAttenuation: 0
+  OverrideAttenuation: 1
   OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  OverrideMaxDistance: 4
 --- !u!135 &497223803
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2650,6 +2650,7 @@ GameObject:
   - component: {fileID: 613997995}
   - component: {fileID: 613997996}
   - component: {fileID: 613997997}
+  - component: {fileID: 613997998}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2918,6 +2919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Outside_foot_switch
   snapshotActivated: 0
+  outsideTag: Outside
   outsideSnapshot:
     Guid:
       Data1: -2116471840
@@ -2925,6 +2927,22 @@ MonoBehaviour:
       Data3: -933700201
       Data4: -1390444203
     Path: snapshot:/Outside_Snapshot
+--- !u!114 &613997998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613997984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f4ed2e91580f4459a40df16f56ba56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VCA
+  globalMuteActive: 1
+  musicMuteActive: 0
+  tavernMuteActive: 0
+  outsideMuteActive: 0
 --- !u!1 &688602384
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,13 +3517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc4a4da891945f49aaa5b911f9f8711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomAmbient
-  roomAmbientEvent:
-    Guid:
-      Data1: 1917994135
-      Data2: 1090178613
-      Data3: 55822722
-      Data4: 2036726102
-    Path: snapshot:/Rooms
+  ambientActivated: 0
 --- !u!1 &896572285
 GameObject:
   m_ObjectHideFlags: 0
