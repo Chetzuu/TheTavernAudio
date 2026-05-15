@@ -209,6 +209,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 118000
+--- !u!114 &-2974613745122361300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Sprint
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Player/Sprint
+  Guid:
+    Data1: 370983961
+    Data2: 1324426336
+    Data3: -490853754
+    Data4: 639185514
+  Banks:
+  - {fileID: -2640575385948309648}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2640575385948309648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,10 +251,10 @@ MonoBehaviour:
   Path: ../../../Desktop/CDV/II semestr/Audio/audio/fmod/Fmod_Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639138048220000000
+  lastModified: 639144649011152324
   FileSizes:
   - Name: Desktop
-    Value: 7150528
+    Value: 7164800
   Exists: 1
 --- !u!114 &-2591780207938850478
 MonoBehaviour:
@@ -331,7 +358,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -2640575385948309648}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
@@ -417,13 +444,14 @@ MonoBehaviour:
   - {fileID: -1319893736356631135}
   - {fileID: -1925676803389039016}
   - {fileID: -488231028073553321}
+  - {fileID: -2974613745122361300}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2640575385948309648}
   StringsBanks:
   - {fileID: 4637225611666651371}
   cacheVersion: 131859
-  cacheTime: 639138048220000000
+  cacheTime: 639144649011162354
   SerializableEventsDict:
   - key: event:/Ambient/Ambient_Forest
     index: 0
@@ -443,6 +471,8 @@ MonoBehaviour:
     index: 7
   - key: snapshot:/Outside_Snapshot
     index: 8
+  - key: event:/Player/Sprint
+    index: 9
 --- !u!114 &1085951995481858788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,10 +736,10 @@ MonoBehaviour:
   Path: ../../../Desktop/CDV/II semestr/Audio/audio/fmod/Fmod_Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639138048220000000
+  lastModified: 639144649011162354
   FileSizes:
   - Name: Desktop
-    Value: 1542
+    Value: 1580
   Exists: 1
 --- !u!114 &5817784670708647165
 MonoBehaviour:
