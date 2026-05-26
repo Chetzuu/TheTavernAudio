@@ -50,6 +50,7 @@ public class Footsteps : MonoBehaviour
     {
         // Sprawdza, czy gracz się porusza.
         bool isMoving = (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0);
+        
         // Sprawdza, czy gracz biegnie.
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
 
@@ -61,7 +62,9 @@ public class Footsteps : MonoBehaviour
             if (Time.time - lastFootstepTime > footstepInterval)
             {
                 lastFootstepTime = Time.time;
-                PlayFootsteps();
+                
+                // NOWE: Przekazujemy informację o bieganiu do funkcji!
+                PlayFootsteps(isRunning); 
             }
         }
     }
@@ -69,13 +72,16 @@ public class Footsteps : MonoBehaviour
     /// <summary>
     /// Odtwarza dźwięk kroków w zależności od powierzchni.
     /// </summary>
-    private void PlayFootsteps()
+    // NOWE: Funkcja teraz przyjmuje zmienną isRunning
+    private void PlayFootsteps(bool isRunning) 
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, distToGround + 0.5f))
         {
             string surfaceTag = hit.collider.tag;
-            PlaySurfaceSound(footstepsSoundInstance, footstepsEvent, surfaceTag);
+            
+            // NOWE: Przekazujemy isRunning dalej do odtwarzacza
+            PlaySurfaceSound(footstepsSoundInstance, footstepsEvent, surfaceTag, isRunning);
         }
     }
 
@@ -90,7 +96,7 @@ public class Footsteps : MonoBehaviour
             if (Physics.Raycast(transform.position, Vector3.down, out hit, distToGround + 0.5f))
             {
                 string surfaceTag = hit.collider.tag;
-                PlaySurfaceSound(jumpSoundInstance, jumpEvent, surfaceTag);
+                PlaySurfaceSound(jumpSoundInstance, jumpEvent, surfaceTag); // Skok nie używa biegu
             }
             isGrounded = false;
             isJumping = true;
@@ -117,7 +123,7 @@ public class Footsteps : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out hit, distToGround + 0.5f))
         {
             string surfaceTag = hit.collider.tag;
-            PlaySurfaceSound(landSoundInstance, landEvent, surfaceTag);
+            PlaySurfaceSound(landSoundInstance, landEvent, surfaceTag); // Lądowanie nie używa biegu
         }
         isGrounded = true;
         isJumping = false;
@@ -126,7 +132,8 @@ public class Footsteps : MonoBehaviour
     /// <summary>
     /// Ogólna metoda do odtwarzania dźwięku na podstawie tagu powierzchni.
     /// </summary>
-    private void PlaySurfaceSound(FMOD.Studio.EventInstance soundInstance, EventReference eventRef, string surfaceTag)
+    // NOWE: Funkcja opcjonalnie przyjmuje zmienną isRunning (domyślnie false dla skoków i lądowań)
+    private void PlaySurfaceSound(FMOD.Studio.EventInstance soundInstance, EventReference eventRef, string surfaceTag, bool isRunning = false)
     {
         // LOG 1: Sprawdza w co dokładnie uderzył Raycast
         Debug.Log("<color=cyan>Raycast trafił w obiekt z tagiem: </color><b>" + surfaceTag + "</b>");
@@ -152,7 +159,6 @@ public class Footsteps : MonoBehaviour
                 break;
                 
             default:
-                // LOG: Jeśli obiekt ma tag, którego nie ma na liście wyżej (albo nie ma go wcale)
                 Debug.Log("<color=orange>Brak tagu na liście! Ustawiam awaryjnie: Wood</color>");
                 surfaceParameter = "Wood";
                 break;
@@ -164,14 +170,20 @@ public class Footsteps : MonoBehaviour
             soundInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
             
             // LOG 2: Sprawdza, co skrypt próbuje przekazać do FMODa
-            Debug.Log("<color=green>Wysyłam do FMOD parametr: </color>" + surfaceParameter);
+            Debug.Log("<color=green>Wysyłam do FMOD powierzchnię: </color>" + surfaceParameter);
 
-            // ZMIENIONE: Z "Footsteps_surface" na "Manager_Footsteps" z Twojego screena
+            // Wysyła parametr podłoża
             FMOD.RESULT result = soundInstance.setParameterByNameWithLabel("Manager_Footsteps", surfaceParameter); 
             
+            // NOWE: Wysyłanie trybu chód/bieg
+            string modeLabel = isRunning ? "Run" : "Walk";
+            Debug.Log("<color=yellow>Wysyłam do FMOD tryb: </color>" + modeLabel);
+            
+            // UWAGA: Jeśli zmieniłeś nazwę "Parameter 2" w FMODzie, musisz ją podmienić również tutaj!
+            soundInstance.setParameterByNameWithLabel("Parameter 2", modeLabel);
+
             if (result != FMOD.RESULT.OK)
             {
-                // LOG 3: Jeśli nazwa "Manager_Footsteps" w FMOD jest jednak inna, tutaj wywali błąd
                 Debug.LogError("<color=red>FMOD BŁĄD: </color>" + result);
             }
 
